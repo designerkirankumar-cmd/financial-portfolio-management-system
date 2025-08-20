@@ -1,59 +1,34 @@
-# FinancialPortfolioManagement
+#Financial Portfolio Management System
+This is a web-based application built with Angular for managing and tracking a financial portfolio. It features a responsive dashboard and a validated form for adding new investments.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+Prerequisites
+You need to have Node.js and the Angular CLI installed on your machine.
 
-## Development server
+Node.js: https://nodejs.org/
 
-To start a local development server, run:
+Angular CLI: npm install -g @angular/cli
 
-```bash
-ng serve
-```
+Installation and Setup
+Create a new Angular project:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+ng new financial-portfolio-app --standalone --skip-install
 
-## Code scaffolding
+Navigate to the project directory:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+cd financial-portfolio-app
 
-```bash
-ng generate component component-name
-```
+Recreate the file structure and copy the code:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Replace the contents of the existing files (src/app/app.module.ts, etc.) with the code provided in the next immersive document.
 
-```bash
-ng generate --help
-```
+Create the new directories and files as specified (src/app/dashboard, src/app/investment-form, etc.).
 
-## Building
+Install dependencies:
 
-To build the project run:
+npm install
 
-```bash
-ng build
-```
+Run the application:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+ng serve --open
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This will compile the application, start a development server, and open the app in your browser.
