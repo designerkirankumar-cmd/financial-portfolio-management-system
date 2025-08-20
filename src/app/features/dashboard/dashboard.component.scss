@@ -1,0 +1,215 @@
+.dashboard-card {
+    background-color: white;
+    padding: 20px;
+    flex: 2;
+}
+
+.dashboard-card h2 {
+    color: #007bff;
+    border-bottom: 2px solid #f4f7f9;
+    padding-bottom: 10px;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.metrics-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.metric-item {
+    flex: 1;
+    padding: 20px;
+    background: #ffffff;
+    text-align: center;
+    border: 1px solid #f0efef;
+    border-radius: 5px;
+
+    p {
+        color: #ccc;
+    }
+}
+
+.metric-item h3 {
+    margin: 5px 0 0;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.chart-section {
+    margin-top: 30px;
+}
+
+/* Mock Pie Chart CSS */
+.pie-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 340px;
+    width: 100%;
+    background: aliceblue;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.pie-chart {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-image: conic-gradient(#007bff 0deg 30deg,
+            #28a745 30deg 70deg,
+            #ffc107 70deg 100deg,
+            #dc3545 100deg 150deg,
+            #6c757d 150deg 360deg);
+}
+
+.legend-label {
+    position: absolute;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Mock Line Chart CSS */
+.line-chart-container {
+    padding: 20px 0;
+}
+
+.line-chart {
+    background: #f0f8ff;
+    border-radius: 8px;
+    padding: 10px;
+    height: 320px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-card {
+        flex-basis: 100%;
+    }
+}
+
+/* New styles for the investment grid */
+.investments-section {
+    margin-top: 30px;
+}
+
+.investments-section h3 {
+    color: #007bff;
+
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.no-investments-message {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+}
+
+
+.investment-card {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.investment-card h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+.investment-card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.investment-card .gain-loss {
+    font-weight: bold;
+}
+
+.positive {
+    color: #28a745;
+}
+
+.negative {
+    color: #dc3545;
+}
+
+.display-flex-chart {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .chart-section {
+        flex: 1;
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #007bff;
+        }
+    }
+
+}
+
+.investments-section {
+    h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #007bff;
+    }
+}
+
+.title-investment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f4f7f9;
+    margin-bottom: 20px;
+    width: 100%;
+
+    button {
+        padding: 0 10px;
+        height: 36px;
+        background: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.06);
+    }
+}
+
+table.investmentTable {
+    width: 100%;
+    display: table;
+    thead{
+        border-bottom: 2px solid #007bff;
+        tr{
+            th{
+                font-weight: 600;
+    text-align: left;
+    padding: 15px;
+    background: #e9f4ff;
+            }
+        }
+    }
+    tbody{
+        tr{
+            td{
+                padding: 15px;
+                border-bottom: 1px solid #d4e9ff;
+            }
+        }
+    }
+}

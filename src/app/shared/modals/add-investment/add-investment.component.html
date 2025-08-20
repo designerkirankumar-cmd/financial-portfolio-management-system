@@ -1,0 +1,82 @@
+<div class="form-card">
+    <h2>Add New Investment</h2>
+    <div *ngIf="submissionSuccess" class="success-message">
+        Investment added successfully!
+    </div>
+    <form [formGroup]="investmentForm" (ngSubmit)="onReview()" *ngIf="!reviewInvestment">
+        <div class="form-group">
+            <label for="assetType">Asset Type</label>
+            <select id="assetType" formControlName="assetType"
+                [class.is-invalid]="formSubmitted && investmentForm.controls['assetType'].invalid">
+                <option value="" disabled selected>Select type</option>
+                <option value="Stock">Stock</option>
+                <option value="Crypto">Crypto</option>
+                <option value="Bond">Bond</option>
+                <option value="Real Estate">Real Estate</option>
+            </select>
+            <div *ngIf="formSubmitted && investmentForm.controls['assetType'].errors?.['required']"
+                class="error-message">
+                Asset Type is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="assetName">Asset Name</label>
+            <input type="text" id="assetName" formControlName="assetName" placeholder="e.g., Apple Inc., Bitcoin"
+                [class.is-invalid]="formSubmitted && investmentForm.controls['assetName'].invalid">
+            <div *ngIf="formSubmitted && investmentForm.controls['assetName'].errors?.['required']"
+                class="error-message">
+                Asset Name is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" formControlName="quantity"
+                [class.is-invalid]="formSubmitted && investmentForm.controls['quantity'].invalid">
+            <div *ngIf="formSubmitted && investmentForm.controls['quantity'].errors?.['required']"
+                class="error-message">
+                Quantity is required.
+            </div>
+            <div *ngIf="formSubmitted && investmentForm.controls['quantity'].errors?.['min']" class="error-message">
+                Quantity must be greater than 0.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="purchasePrice">Purchase Price</label>
+            <input type="number" id="purchasePrice" formControlName="purchasePrice"
+                [class.is-invalid]="formSubmitted && investmentForm.controls['purchasePrice'].invalid">
+            <div *ngIf="formSubmitted && investmentForm.controls['purchasePrice'].errors?.['required']"
+                class="error-message">
+                Purchase Price is required.
+            </div>
+            <div *ngIf="formSubmitted && investmentForm.controls['purchasePrice'].errors?.['min']"
+                class="error-message">
+                Purchase Price must be greater than 0.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="purchaseDate">Purchase Date</label>
+            <input type="date" id="purchaseDate" formControlName="purchaseDate"
+                [class.is-invalid]="formSubmitted && investmentForm.controls['purchaseDate'].invalid">
+            <div *ngIf="formSubmitted && investmentForm.controls['purchaseDate'].errors?.['required']"
+                class="error-message">
+                Purchase Date is required.
+            </div>
+        </div>
+        <button type="submit" class="btn primary-btn">Review</button>
+    </form>
+    <div *ngIf="reviewInvestment" class="review-section">
+        <h3>Please Review Your Investment</h3>
+        <div class="review-details">
+            <p><strong>Asset Type:</strong> {{ reviewInvestment.assetType }}</p>
+            <p><strong>Asset Name:</strong> {{ reviewInvestment.assetName }}</p>
+            <p><strong>Quantity:</strong> {{ reviewInvestment.quantity }}</p>
+            <p><strong>Purchase Price:</strong> <span
+                    [innerHTML]="reviewInvestment.purchasePrice | currencyFormat"></span></p>
+            <p><strong>Purchase Date:</strong> {{ reviewInvestment.purchaseDate | date }}</p>
+        </div>
+        <div class="review-buttons">
+            <button class="btn secondary-btn" (click)="onCancelReview()">Edit</button>
+            <button class="btn primary-btn" (click)="onSubmit()">Submit</button>
+        </div>
+    </div>
+</div>

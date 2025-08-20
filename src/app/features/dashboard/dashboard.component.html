@@ -1,0 +1,93 @@
+<div class="dashboard-card">    
+    <div *ngIf="isLoading; else dashboardContent" class="loading-state">
+        <p>Loading portfolio data...</p>
+    </div>
+    <ng-template #dashboardContent>
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <div class="display-flex"><i class="fa fa-inr"></i> <h3 [appHighlight]="'#007bff'" [innerHTML]="portfolioSummary?.totalValue ?? 0 | currencyFormat"></h3></div>
+                <p>Total Value</p>
+                
+            </div>
+            <div class="metric-item">
+                
+                <div class="display-flex"><i class="fa fa-inr"></i> <h3 [appHighlight]="'#28a745'" [innerHTML]="portfolioSummary?.totalGainLoss ?? 0 | currencyFormat"></h3></div>
+                <p>Total Gain/Loss</p>
+            </div>
+            <div class="metric-item">               
+                <div class="display-flex"><h3 [appHighlight]="'#28a745'">+15.5%</h3></div>
+                 <p>Last Week Performance</p>
+            </div>
+        </div>
+        <div class="display-flex-chart">
+        <div class="chart-section">
+            <h3>Portfolio Performance</h3>
+            <div class="line-chart-container">
+                <div class="line-chart">
+                    <svg viewBox="0 0 100 50">
+                        <polyline fill="none" stroke="#007bff" stroke-width="1"
+                            points="0,45 10,40 20,35 30,30 40,25 50,20 60,15 70,10 80,5 90,10 100,0" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="chart-section">
+            <h3>Asset Allocation</h3>
+            <div class="pie-chart-container">
+                <div class="pie-chart">
+                    <div *ngFor="let asset of assetAllocation" class="slice"
+                        [style.transform]="'rotate(' + asset.percentage * 3.6 + 'deg)'">
+                        <span class="legend-label">{{ asset.type }} ({{ asset.percentage | number:'1.0-0' }}%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="investments-section">
+            <div class="title-investment">
+                <h3>My Investments</h3>
+                <button (click)="openModal()">
+                <span class="mr-2">+</span> Add Investment
+              </button>
+            </div>
+            
+            <div *ngIf="!portfolioSummary?.investments?.length" class="no-investments-message">
+                <p>No investments added yet. Use the form to add your first one!</p>
+            </div>
+
+            <div *ngIf="portfolioSummary?.investments?.length" class="investment-grid">
+                <table class="investmentTable">
+                    <thead>
+                    <tr>
+                        <th>Asset Name</th>
+                        <th>Type</th>
+                        <th>Quantity</th>
+                        <th>Purchase Price</th>
+                        <th>Current Price</th>
+                        <th>Purchase Date</th>
+                        <th>Gain/Loss</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let investment of portfolioSummary?.investments">
+                            <td>{{ investment.assetName }}</td>
+                            <td>{{ investment.assetType }}</td>
+                            <td>{{ investment.quantity }}</td>
+                            <td><span
+                            [innerHTML]="investment.purchasePrice | currencyFormat"></span></td>
+                            <td><span
+                            [innerHTML]="investment.currentPrice | currencyFormat"></span></td>
+                            <td>{{ investment.purchaseDate | date }}</td>
+                            <td><span [class.positive]="(investment.currentPrice - investment.purchasePrice) > 0"
+                            [class.negative]="(investment.currentPrice - investment.purchasePrice) < 0"
+                            [innerHTML]="(investment.currentPrice - investment.purchasePrice) | currencyFormat">
+                        </span></td>
+                        </tr>
+                    </tbody>                    
+                </table>
+            </div>
+        </div>
+    </ng-template>
+</div>
