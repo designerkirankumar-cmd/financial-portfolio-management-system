@@ -1,4 +1,5 @@
 #Financial Portfolio Management System
+
 This is a web-based application built with Angular for managing and tracking a financial portfolio. It features a responsive dashboard and a validated form for adding new investments.
 
 Prerequisites
